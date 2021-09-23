@@ -1,22 +1,31 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
 function Movie(props) {
-    return (
-        <div>
-            <h4>{props.title}</h4>
-            <img src={props.poster} alt={props.title}/>
-        </div>
-    )
+  return (
+    <div className="movie">
+      <img src={props.poster} alt={props.title} title={props.title} />
+      <div className="movie__data">
+        <h3 className="movie__title">{props.title}</h3>
+        <h5 className="movie__year">{props.year}</h5>
+        <ul className="genres">
+          {props.genres.map((genre, index) => (
+            <li className="genres__genre" key={index}>{genre}</li>
+          ))}
+        </ul>
+        <p className="movie__summary">{props.summary}</p>
+      </div>
+    </div>
+  );
 }
 
 Movie.propTypes = {
-    id: PropTypes.number.isRequired,
-    year: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    summary: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired
-}
+  id: PropTypes.number.isRequired,
+  year: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  summary: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
 
-export default Movie
-
+export default Movie;
