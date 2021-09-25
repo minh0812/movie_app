@@ -14,7 +14,7 @@ function Movie(props) {
             <li className="genres__genre" key={index}>{genre}</li>
           ))}
         </ul>
-        <p className="movie__summary">{props.summary}</p>
+        <p className="movie__summary">{props.summary.slice(0, 180)}...</p>
       </div>
     </div>
   );
